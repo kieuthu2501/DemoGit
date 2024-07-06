@@ -1,0 +1,55 @@
+﻿@page "/cthdedit/{id:int}"
+@inject ApplicationDbContext DBcontextcthd
+@inject NavigationManager Navigation
+@inject IHttpContextAccessor HttpContextAccessor
+
+
+<h3>Chỉnh Sửa Chi Tiết Hoá Đơn</h3>
+
+@if (chiTHD == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <EditForm Model="@chiTHD" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="form-group">
+            <label for="IDSP">Mã Sản Phẩm</label>
+            <InputDate id="IDSP" class="form-control" @bind-Value="chiTHD.IDSP" />
+        </div>
+        <div class="form-group">
+            <label for="SoLuong">Số Lượng</label>
+            <InputNumber id="SoLuong" class="form-control" @bind-Value="chiTHD.SoLuong" />
+        </div>
+       
+        <button type="submit" class="btn btn-primary">Lưu</button>
+        <button type="button" class="btn btn-secondary" @onclick="Cancel">Hủy</button>
+    </EditForm>
+}
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+
+    private CTHD chiTHD;
+
+    protected override async Task OnInitializedAsync()
+    {
+        chiTHD = await DBcontextcthd.CTHDs.FindAsync(id);
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        DBcontextcthd.CTHDs.Update(chiTHD);
+        await DBcontextcthd.SaveChangesAsync();
+        Navigation.NavigateTo("/cthd");
+    }
+
+    private void Cancel()
+    {
+        Navigation.NavigateTo("/cthd");
+    }
+}

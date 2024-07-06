@@ -1,0 +1,71 @@
+﻿@page "/hd"
+@inject ApplicationDbContext DBcontexthd
+@inject NavigationManager Navigation
+
+<h3>Danh Sách Hoá Đơn</h3>
+
+<button class="btn btn-success" @onclick="NavigateToAddProduct">Thêm Hoá Đơn</button>
+
+@if (hoaDons == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IDHD</th>
+                <th>IDKH</th>
+                <th>Ngày Lập</th>
+                <th>Hình Thức TT</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var hd in hoaDons)
+            {
+                <tr>
+                    <td>@hd.IDHD</td>
+                    <td>@hd.IDKH</td>
+                    <td>@hd.NgayLap.ToString("dd/MM/yyyy")</td>
+                    <td>@hd.HTTT</td>
+                   
+                    <td>
+                        <button class="btn btn-primary" @onclick="() => EditProduct(hd.IDHD)">Sửa</button>
+                        <button class="btn btn-danger" @onclick="() => DeleteProduct(hd.IDHD)">Xóa</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<HoaDon> hoaDons;
+
+    protected override async Task OnInitializedAsync()
+    {
+        hoaDons = await DBcontexthd.HoaDons.ToListAsync();
+    }
+
+    private void EditProduct(int id)
+    {
+        Navigation.NavigateTo($"/edit/{id}");
+    }
+
+    private async Task DeleteProduct(int id)
+    {
+        var product = await DBcontexthd.HoaDons.FindAsync(id);
+        if (product != null)
+        {
+            DBcontexthd.HoaDons.Remove(product);
+            await DBcontexthd.SaveChangesAsync();
+            hoaDons = await DBcontexthd.HoaDons.ToListAsync();
+        }
+    }
+
+    private void NavigateToAddProduct()
+    {
+        Navigation.NavigateTo("/add");
+    }
+}

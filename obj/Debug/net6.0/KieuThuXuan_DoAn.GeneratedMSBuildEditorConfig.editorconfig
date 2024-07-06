@@ -1,0 +1,123 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = KieuThuXuan_DoAn
+build_property.RootNamespace = KieuThuXuan_DoAn
+build_property.ProjectDir = C:\Users\ADMIN\Downloads\KieuThuXuan_DoAn\KieuThuXuan_DoAn\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\ADMIN\Downloads\KieuThuXuan_DoAn\KieuThuXuan_DoAn
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/ADMIN/Downloads/KieuThuXuan_DoAn/KieuThuXuan_DoAn/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Downloads/KieuThuXuan_DoAn/KieuThuXuan_DoAn/Pages/Buy.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQnV5LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Downloads/KieuThuXuan_DoAn/KieuThuXuan_DoAn/Pages/ChiTietHoaDon/CTHDadd.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2hpVGlldEhvYURvblxDVEhEYWRkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Downloads/KieuThuXuan_DoAn/KieuThuXuan_DoAn/Pages/ChiTietHoaDon/CTHDfix.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2hpVGlldEhvYURvblxDVEhEZml4LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Downloads/KieuThuXuan_DoAn/KieuThuXuan_DoAn/Pages/ChiTietHoaDon/CTHDview.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2hpVGlldEhvYURvblxDVEhEdmlldy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Downloads/KieuThuXuan_DoAn/KieuThuXuan_DoAn/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Downloads/KieuThuXuan_DoAn/KieuThuXuan_DoAn/Pages/FetchData.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Downloads/KieuThuXuan_DoAn/KieuThuXuan_DoAn/Pages/GioHang.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2lvSGFuZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Downloads/KieuThuXuan_DoAn/KieuThuXuan_DoAn/Pages/HoaDonIn.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9hRG9uSW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Downloads/KieuThuXuan_DoAn/KieuThuXuan_DoAn/Pages/HoaDon/HDadd.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9hRG9uXEhEYWRkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Downloads/KieuThuXuan_DoAn/KieuThuXuan_DoAn/Pages/HoaDon/HDfix.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9hRG9uXEhEZml4LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Downloads/KieuThuXuan_DoAn/KieuThuXuan_DoAn/Pages/HoaDon/HDview.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9hRG9uXEhEdmlldy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Downloads/KieuThuXuan_DoAn/KieuThuXuan_DoAn/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Downloads/KieuThuXuan_DoAn/KieuThuXuan_DoAn/Pages/KhachHang/KHadd.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcS2hhY2hIYW5nXEtIYWRkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Downloads/KieuThuXuan_DoAn/KieuThuXuan_DoAn/Pages/KhachHang/KHfix.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcS2hhY2hIYW5nXEtIZml4LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Downloads/KieuThuXuan_DoAn/KieuThuXuan_DoAn/Pages/KhachHang/KHview.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcS2hhY2hIYW5nXEtIdmlldy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Downloads/KieuThuXuan_DoAn/KieuThuXuan_DoAn/Pages/SanPham/SPadd.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2FuUGhhbVxTUGFkZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Downloads/KieuThuXuan_DoAn/KieuThuXuan_DoAn/Pages/SanPham/SPfix.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2FuUGhhbVxTUGZpeC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Downloads/KieuThuXuan_DoAn/KieuThuXuan_DoAn/Pages/SanPham/SPview.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2FuUGhhbVxTUHZpZXcucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Downloads/KieuThuXuan_DoAn/KieuThuXuan_DoAn/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Downloads/KieuThuXuan_DoAn/KieuThuXuan_DoAn/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Downloads/KieuThuXuan_DoAn/KieuThuXuan_DoAn/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-6f5ny3b1wu
+
+[C:/Users/ADMIN/Downloads/KieuThuXuan_DoAn/KieuThuXuan_DoAn/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-mqk5c0zkfm
+
+[C:/Users/ADMIN/Downloads/KieuThuXuan_DoAn/KieuThuXuan_DoAn/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Downloads/KieuThuXuan_DoAn/KieuThuXuan_DoAn/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Downloads/KieuThuXuan_DoAn/KieuThuXuan_DoAn/Pages/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

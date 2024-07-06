@@ -1,0 +1,73 @@
+﻿@page "/kh"
+@inject ApplicationDbContext DBcontextkh
+@inject NavigationManager Navigation
+
+<h3>Danh Sách Khách Hàng</h3>
+
+<button class="btn btn-success" @onclick="NavigateToAddProduct">Thêm Khách Hàng</button>
+
+@if (khachHangs == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IDKH</th>
+                <th>Tên Khách Hàng</th>
+                <th>Địa Chỉ</th>
+                <th>SDT</th>
+                <th>Ngày Nhập</th>
+                <th>Thao Tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var kh in khachHangs)
+            {
+                <tr>
+                    <td>@kh.IDKH</td>
+                    <td>@kh.TenKH</td>
+                    <td>@kh.DiaChi</td>
+                    <td>@kh.SDT</td>
+                    <td>@kh.NgaySinh.ToString("dd/MM/yyyy")</td>                 
+                    <td>
+                        <button class="btn btn-primary" @onclick="() => EditProduct(kh.IDKH)">Sửa</button>
+                        <button class="btn btn-danger" @onclick="() => DeleteProduct(kh.IDKH)">Xóa</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<KhachHang> khachHangs;
+
+    protected override async Task OnInitializedAsync()
+    {
+        khachHangs = await DBcontextkh.KhachHangs.ToListAsync();
+    }
+
+    private void EditProduct(int id)
+    {
+        Navigation.NavigateTo($"/edit/{id}");
+    }
+
+    private async Task DeleteProduct(int id)
+    {
+        var product = await DBcontextkh.KhachHangs.FindAsync(id);
+        if (product != null)
+        {
+            DBcontextkh.KhachHangs.Remove(product);
+            await DBcontextkh.SaveChangesAsync();
+            khachHangs = await DBcontextkh.KhachHangs.ToListAsync();
+        }
+    }
+
+    private void NavigateToAddProduct()
+    {
+        Navigation.NavigateTo("/add");
+    }
+}

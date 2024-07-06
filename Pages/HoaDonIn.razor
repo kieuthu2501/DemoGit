@@ -1,0 +1,63 @@
+﻿@page "/hoadon"
+@inject CartService CartService
+@inject NavigationManager Navigation
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-mt-5">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center">Hóa Đơn Bán Hàng</h3>
+                    <p class="text-center">Cửa Hàng HiMa Shop</p>
+                    <p class="text-center">Địa chỉ: 99 Hồ Đắc Di - Phường An Cựu - TP.Huế - Tỉnh Thừa Thiên Huế</p>
+                </div>
+                <div class="card-body">
+                    @if (CartService.CartItems.Count == 0)
+                    {
+                        <p class="text-center">Không có sản phẩm nào trong hóa đơn.</p>
+                    }
+                    else
+                    {
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Tên Sản Phẩm</th>
+                                    <th scope="col">Số Lượng</th>
+                                    <th scope="col">Đơn Giá</th>
+                                    <th scope="col">Thành Tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in CartService.CartItems)
+                                {
+                                    <tr>
+                                        <th scope="row">@item.IDSP</th>
+                                        <td>@item.SanPham.TenSP</td>
+                                        <td>@item.Quantity</td>
+                                        <td>@item.SanPham.GiaSP.ToString("C")</td>
+                                        <td>@(item.SanPham.GiaSP * item.Quantity)</td>
+                                    </tr>
+                                }
+                                <tr>
+                                    <td colspan="4" class="text-right"><strong>Tổng cộng:</strong></td>
+                                    <td><strong>@CartService.GetTotal().ToString("C")</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    }
+                </div>
+                <div class="card-footer text-muted">
+                    <button class="btn btn-secondary float-left" @onclick="BackToCart">Quay Lại Giỏ Hàng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private void BackToCart()
+    {
+        Navigation.NavigateTo("/cart");
+    }
+}

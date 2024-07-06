@@ -1,0 +1,88 @@
+﻿@page "/sp"
+@inject ApplicationDbContext DBcontextsp
+@inject NavigationManager Navigation
+
+<h3>Danh Sách Sản Phẩm</h3>
+
+<button class="btn btn-success" @onclick="NavigateToAddProduct">Thêm Sản Phẩm</button>
+
+@if (sanPhams == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IDSP</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Loại Sản Phẩm</th>
+                <th>Giá</th>
+                <th>Ngày Nhập</th>
+                <th>Tồn Kho</th>
+                <th>Mô Tả</th>
+                <th>Ảnh</th>
+                <th>Hành Động</th>
+                <th>Mua Ngay</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var sp in sanPhams)
+            {
+                <tr>
+                    <td>@sp.IDSP</td>
+                    <td>@sp.TenSP</td>
+                    <td>@sp.LoaiSP</td>
+                    <td>@sp.GiaSP</td>
+                    <td>@sp.NgayNhap.ToString("dd/MM/yyyy")</td>
+                    <td>@sp.TonKho</td>
+                    <td>@sp.MoTa</td>
+                    <td class="table-middle text-center"><img src="@sp.Anh" class="img-thumbnail" style="width:100px;" /></td>
+                    <td>
+                        <button class="btn btn-primary" @onclick="() => EditProduct(sp.IDSP)">Sửa</button>
+                        <button class="btn btn-danger" @onclick="() => DeleteProduct(sp.IDSP)">Xóa</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-warning" @onclick="() => BuyNow(sp.IDSP)">Mua Ngay</button> 
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<SanPhamm> sanPhams;
+
+    protected override async Task OnInitializedAsync()
+    {
+        sanPhams = await DBcontextsp.SanPhams.ToListAsync();
+    }
+
+    private void EditProduct(int id)
+    {
+        Navigation.NavigateTo($"/edit/{id}");
+    }
+
+    private async Task DeleteProduct(int id)
+    {
+        var product = await DBcontextsp.SanPhams.FindAsync(id);
+        if (product != null)
+        {
+            DBcontextsp.SanPhams.Remove(product);
+            await DBcontextsp.SaveChangesAsync();
+            sanPhams = await DBcontextsp.SanPhams.ToListAsync();
+        }
+    }
+
+    private void NavigateToAddProduct()
+    {
+        Navigation.NavigateTo("/add");
+    }
+
+    private void BuyNow(int id)
+    {
+        Navigation.NavigateTo($"/muasp/{id}");
+    }
+}

@@ -1,0 +1,70 @@
+﻿@page "/spedit/{id:int}"
+@inject ApplicationDbContext DBcontextsp
+@inject NavigationManager Navigation
+@inject IHttpContextAccessor HttpContextAccessor
+
+
+<h3>Chỉnh Sửa Sản Phẩm</h3>
+
+@if (sanPham == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <EditForm Model="@sanPham" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="form-group">
+            <label for="TenSP">Tên Sản Phẩm</label>
+            <InputText id="TenSP" class="form-control" @bind-Value="sanPham.TenSP" />
+        </div>
+        <div class="form-group">
+            <label for="LoaiSP">Loại Sản Phẩm</label>
+            <InputText id="LoaiSP" class="form-control" @bind-Value="sanPham.LoaiSP" />
+        </div>
+        <div class="form-group">
+            <label for="GiaSP">Giá</label>
+            <InputNumber id="GiaSP" class="form-control" @bind-Value="sanPham.GiaSP" />
+        </div>
+        <div class="form-group">
+            <label for="NgayNhap">Ngày Nhập</label>
+            <InputDate id="NgayNhap" class="form-control" @bind-Value="sanPham.NgayNhap" />
+        </div>
+        <div class="form-group">
+            <label for="TonKho">Tồn Kho</label>
+            <InputNumber id="TonKho" class="form-control" @bind-Value="sanPham.TonKho" />
+        </div>
+        <div class="form-group">
+            <label for="MoTa">Mô Tả</label>
+            <InputTextArea id="MoTa" class="form-control" @bind-Value="sanPham.MoTa" />
+        </div>
+        <button type="submit" class="btn btn-primary">Lưu</button>
+        <button type="button" class="btn btn-secondary" @onclick="Cancel">Hủy</button>
+    </EditForm>
+}
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+
+    private SanPhamm sanPham;
+
+    protected override async Task OnInitializedAsync()
+    {
+        sanPham = await DBcontextsp.SanPhams.FindAsync(id);
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        DBcontextsp.SanPhams.Update(sanPham);
+        await DBcontextsp.SaveChangesAsync();
+        Navigation.NavigateTo("/sp");
+    }
+
+    private void Cancel()
+    {
+        Navigation.NavigateTo("/sp");
+    }
+}

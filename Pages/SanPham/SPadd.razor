@@ -1,0 +1,57 @@
+﻿@page "/addsp"
+@inject ApplicationDbContext DBcontextsp
+@inject NavigationManager Navigation
+
+<h3>Thêm Sản Phẩm Mới</h3>
+
+<EditForm Model="@sanPham" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="TenSP">Tên Sản Phẩm</label>
+        <InputText id="TenSP" class="form-control" @bind-Value="sanPham.TenSP" />
+    </div>
+    <div class="form-group">
+        <label for="LoaiSP">Loại Sản Phẩm</label>
+        <InputText id="LoaiSP" class="form-control" @bind-Value="sanPham.LoaiSP" />
+    </div>
+    <div class="form-group">
+        <label for="GiaSP">Giá</label>
+        <InputNumber id="GiaSP" class="form-control" @bind-Value="sanPham.GiaSP" />
+    </div>
+    <div class="form-group">
+        <label for="NgayNhap">Ngày Nhập</label>
+        <InputDate id="NgayNhap" class="form-control" @bind-Value="sanPham.NgayNhap" />
+    </div>
+    <div class="form-group">
+        <label for="TonKho">Tồn Kho</label>
+        <InputNumber id="TonKho" class="form-control" @bind-Value="sanPham.TonKho" />
+    </div>
+    <div class="form-group">
+        <label for="MoTa">Mô Tả</label>
+        <InputTextArea id="MoTa" class="form-control" @bind-Value="sanPham.MoTa" />
+    </div>
+    <div class="form-group">
+        <label for="Anh">Link Ảnh</label>
+        <InputText id="Anh" class="form-control" @bind-Value="sanPham.Anh" />
+    </div>
+    <button type="submit" class="btn btn-primary">Lưu</button>
+    <button type="button" class="btn btn-secondary" @onclick="Cancel">Hủy</button>
+</EditForm>
+
+@code {
+    private SanPhamm sanPham = new SanPhamm();
+
+    private async Task HandleValidSubmit()
+    {
+        DBcontextsp.SanPhams.Add(sanPham);
+        await DBcontextsp.SaveChangesAsync();
+        Navigation.NavigateTo("/sp");
+    }
+
+    private void Cancel()
+    {
+        Navigation.NavigateTo("/sp");
+    }
+}

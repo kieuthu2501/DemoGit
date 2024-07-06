@@ -1,0 +1,58 @@
+﻿@page "/hdedit/{id:int}"
+@inject ApplicationDbContext DBcontexthd
+@inject NavigationManager Navigation
+@inject IHttpContextAccessor HttpContextAccessor
+
+
+<h3>Chỉnh Sửa Hoá Đơn</h3>
+
+@if (hoaDon == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <EditForm Model="@hoaDon" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="form-group">
+            <label for="NgayLap">Ngày Lập</label>
+            <InputDate id="NgayLap" class="form-control" @bind-Value="hoaDon.NgayLap" />
+        </div>
+        <div class="form-group">
+            <label for="IDKH">Mã Khách Hàng</label>
+            <InputNumber id="IDKH" class="form-control" @bind-Value="hoaDon.IDKH" />
+        </div>
+        <div class="form-group">
+            <label for="HTTT">Hình Thức TT</label>
+            <InputTextArea id="HTTT" class="form-control" @bind-Value="hoaDon.HTTT" />
+        </div>
+        <button type="submit" class="btn btn-primary">Lưu</button>
+        <button type="button" class="btn btn-secondary" @onclick="Cancel">Hủy</button>
+    </EditForm>
+}
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+
+    private HoaDon hoaDon;
+
+    protected override async Task OnInitializedAsync()
+    {
+        hoaDon = await DBcontexthd.HoaDons.FindAsync(id);
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        DBcontexthd.HoaDons.Update(hoaDon);
+        await DBcontexthd.SaveChangesAsync();
+        Navigation.NavigateTo("/hd");
+    }
+
+    private void Cancel()
+    {
+        Navigation.NavigateTo("/hd");
+    }
+}

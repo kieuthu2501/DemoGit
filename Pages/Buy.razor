@@ -1,0 +1,48 @@
+﻿@page "/muasp/{id:int}"
+@inject ApplicationDbContext DBcontextsp
+@inject NavigationManager Navigation
+@inject CartService CartService
+@code {
+    [Parameter]
+    public int id { get; set; }
+    private SanPhamm sanPham;
+    private int quantity = 1;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (DBcontextsp != null)
+        {
+            sanPham = await DBcontextsp.SanPhams.FindAsync(id);
+        }
+    }
+
+    private async Task AddToCart()
+    {
+        await CartService.AddToCart(id, quantity);
+        Navigation.NavigateTo("/cart");
+    }
+
+}
+
+@if (sanPham == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div>
+        <h3>@sanPham.TenSP</h3>
+        <img src="@sanPham.Anh" class="img-thumbnail" style="width:300px;" />
+        <p>@sanPham.MoTa</p>
+        <p>Giá: @sanPham.GiaSP</p>
+        <p>Tồn Kho: @sanPham.TonKho</p>
+        <div>
+            <label>Số lượng:</label>
+            <button class="btn btn-secondary" @onclick="() => quantity = Math.Max(1, quantity - 1)">-</button>
+            <span>@quantity</span>
+            <button class="btn btn-secondary" @onclick="() => quantity++">+</button>
+        </div>
+        <br />
+        <button class="btn btn-success" @onclick="AddToCart">Thêm vào giỏ hàng</button>
+    </div>
+}

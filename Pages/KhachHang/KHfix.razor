@@ -1,0 +1,62 @@
+﻿@page "/khedit/{id:int}"
+@inject ApplicationDbContext DBcontextkh
+@inject NavigationManager Navigation
+@inject IHttpContextAccessor HttpContextAccessor
+
+
+<h3>Chỉnh Sửa Khách Hàng</h3>
+
+@if (khachHang == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <EditForm Model="@khachHang" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="form-group">
+            <label for="TenKH">Tên Khách Hàng</label>
+            <InputText id="TenKH" class="form-control" @bind-Value="khachHang.TenKH" />
+        </div>
+        <div class="form-group">
+            <label for="DiaChi">Địa Chỉ</label>
+            <InputText id="DiaChi" class="form-control" @bind-Value="khachHang.DiaChi" />
+        </div>
+        <div class="form-group">
+            <label for="NgaySinh">Ngày Sinh</label>
+            <InputDate id="NgaySinh" class="form-control" @bind-Value="khachHang.NgaySinh" />
+        </div>
+        <div class="form-group">
+            <label for="SDT">SDT</label>
+            <InputText id="SDT" class="form-control" @bind-Value="khachHang.SDT" />
+        </div>
+        <button type="submit" class="btn btn-primary">Lưu</button>
+        <button type="button" class="btn btn-secondary" @onclick="Cancel">Hủy</button>
+    </EditForm>
+}
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+
+    private KhachHang khachHang;
+
+    protected override async Task OnInitializedAsync()
+    {
+        khachHang = await DBcontextkh.KhachHangs.FindAsync(id);
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        DBcontextkh.KhachHangs.Update(khachHang);
+        await DBcontextkh.SaveChangesAsync();
+        Navigation.NavigateTo("/kh");
+    }
+
+    private void Cancel()
+    {
+        Navigation.NavigateTo("/kh");
+    }
+}

@@ -1,0 +1,60 @@
+﻿@page "/cart"
+@inject CartService CartService
+@inject NavigationManager Navigation
+
+<h3>Giỏ Hàng</h3>
+
+@if (CartService.CartItems.Count == 0)
+{
+    <p>Giỏ hàng của bạn đang trống.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IDSP</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Giá</th>
+                <th>Số Lượng</th>
+                <th>Tổng</th>
+                <th>Hành Động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in CartService.CartItems)
+            {
+                <tr>
+                    <td>@item.IDSP</td>
+                    <td>@item.SanPham.TenSP</td>
+                    <td>@item.SanPham.GiaSP</td>
+                    <td>@item.Quantity</td>
+                    <td>@(item.SanPham.GiaSP * item.Quantity)</td>
+                    <td>
+                        <button class="btn btn-danger" @onclick="() => RemoveFromCart(item.IDSP)">Xóa</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <p><strong>Tổng cộng: @CartService.GetTotal()</strong></p>
+    <button class="btn btn-secondary" @onclick="ClearCart">Xóa Tất Cả</button>
+    <button class="btn btn-primary" @onclick="NavigateToHoaDon">Thanh Toán</button>
+}
+
+@code {
+    private void RemoveFromCart(int id)
+    {
+        CartService.RemoveFromCart(id);
+    }
+
+    private void ClearCart()
+    {
+        CartService.ClearCart();
+    }
+
+    private void NavigateToHoaDon()
+    {
+        Navigation.NavigateTo("/hoadon");
+    }
+}
